@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/main-layout}">
+
+<head>
+<title>Home 1</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+
+		<div id="breadcrumb">
+			<ul class="breadcrumb">
+				<li><i class="fa fa-home"></i><a href="home"> Home</a></li>
+				<li class="active">Dashboard</li>
+				<li><span sec:authorize="isAuthenticated()"
+					style="display: inline-block;"> User-Roles: [[${roles}]] <span
+						sec:authentication="principal.authorities"></span></li>
+			</ul>
+		</div>
+		<!-- /breadcrumb-->
+		<div class="main-header clearfix">
+			<div class="page-title">
+				<h3 class="no-margin">Dashboard</h3>
+				<span>Welcome [[${user.userInfo.last_name}]]...</span> </span>
+			</div>
+			<!-- /page-title -->
+
+			<ul class="page-stats" th:if="${#lists.contains(roles, 'ADMIN_USER')}">
+				<li>
+					<div class="value">
+						<span>Visitors today</span>
+						<h4 id="currentVisitor">10000</h4>
+					</div> <span id="visits" class="sparkline"><canvas width="79"
+							height="35"
+							style="display: inline-block; width: 79px; height: 35px; vertical-align: top;"></canvas></span>
+				</li>
+				<li>
+					<div class="value">
+						<span>Offering today</span>
+						<h4>
+							R<strong id="currentBalance">90000</strong>
+						</h4>
+					</div> <span id="balances" class="sparkline"><canvas width="69"
+							height="35"
+							style="display: inline-block; width: 69px; height: 35px; vertical-align: top;"></canvas></span>
+				</li>
+			</ul>
+			<!-- /page-stats -->
+		</div>
+		<!-- /main-header -->
+
+		<div class="grey-container shortcut-wrapper" th:if="${#lists.contains(roles, 'ADMIN_USER')}">
+			 <a href="index.php#" class="shortcut-link"> <span
+				class="shortcut-icon"> <i class="fa fa-search"></i>
+			</span> <span class="text">Search</span>
+			</a> 
+			<a href="index.php#" class="shortcut-link"> <span
+				class="shortcut-icon"> <i class="fa fa-bar-chart-o"></i>
+			</span> <span class="text">Statistic</span>
+			</a> <a href="index.php#" class="shortcut-link"> <span
+				class="shortcut-icon"> <i class="fa fa-envelope-o"></i> <span
+					class="shortcut-alert"> 5 </span>
+			</span> <span class="text">Messages</span>
+			</a> <a href="index.php#" class="shortcut-link"> <span
+				class="shortcut-icon"> <i class="fa fa-lock"></i>
+			</span> <span class="text">Accounts</span>
+			</a> <a href="index.php#" class="shortcut-link"> <span
+				class="shortcut-icon"> <i class="fa fa-globe"></i> <span
+					class="shortcut-alert"> 7 </span>
+			</span> <span class="text">Notification</span>
+			</a> <a href="index.php#" class="shortcut-link"> <span
+				class="shortcut-icon"> <i class="fa fa-list"></i>
+			</span> <span class="text">Activity</span>
+			</a> <a href="index.php#" class="shortcut-link"> <span
+				class="shortcut-icon"> <i class="fa fa-cog"></i></span> <span
+				class="text">Setting</span>
+			</a>
+		</div>
+		<!-- /grey-container -->
+
+
+		<div class="grey-container shortcut-wrapper">
+			<a class="btn btn-danger quick-btn"><i class="fa fa-home"></i><span>Branches</span></a>
+			<a class="btn btn-info quick-btn"><i class="fa fa-table"></i><span>Attendance</span></a>
+			<a class="btn btn-warning quick-btn"><i
+				class="fa fa-graduation-cap"></i><span>Campuses</span></a> <a
+				class="btn btn-success quick-btn"><i class="fa fa-group"></i><span>Associations</span></a>
+			<a class="btn btn-info quick-btn"><i class="fa fa-briefcase"></i><span>Meetings</span></a>
+			<a class="btn btn-danger quick-btn"><i class="fa fa-heart"></i><span>Weddings</span></a>
+		</div>
+		<!-- /grey-container -->
+
+
+		<div class="grey-container shortcut-wrapper">
+			<a class="btn btn-danger quick-btn"><i class="fa fa-user"></i><span>Pastors</span></a>
+			<a class="btn btn-default quick-btn"><i class="fa fa-group"></i><span>Workers</span></a>
+			<a class="btn btn-default quick-btn"><i class="fa fa-fire"></i><span>Discipleship</span></a>
+			<a class="btn btn-success quick-btn"><i class="fa fa-book"></i><span>Articles</span></a>
+			<a class="btn btn-info quick-btn"><i class="fa fa-coffee"></i><span>Daily
+					Manna</span></a>
+		</div>
+		<!-- /grey-container -->
+
+
+
+		<div class="padding-md" th:if="${#lists.contains(roles, 'ADMIN_USER')}">
+			<div class="row">
+				<div class="col-sm-6 col-md-3">
+					<div class="panel-stat3 bg-danger">
+						<h2 class="m-top-none" id="userCount">577</h2>
+						<h5>Registered users</h5>
+						<i class="fa fa-arrow-circle-o-up fa-lg"></i><span
+							class="m-left-xs">5% Higher than last week</span>
+						<div class="stat-icon">
+							<i class="fa fa-user fa-3x"></i>
+						</div>
+						<div class="refresh-button">
+							<i class="fa fa-refresh"></i>
+						</div>
+						<div class="loading-overlay">
+							<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+						</div>
+					</div>
+				</div>
+				<!-- /.col -->
+				<div class="col-sm-6 col-md-3">
+					<div class="panel-stat3 bg-info">
+						<h2 class="m-top-none">
+							<span id="serverloadCount">15</span>%
+						</h2>
+						<h5>Server Load</h5>
+						<i class="fa fa-arrow-circle-o-up fa-lg"></i><span
+							class="m-left-xs">1% Higher than last week</span>
+						<div class="stat-icon">
+							<i class="fa fa-hdd-o fa-3x"></i>
+						</div>
+						<div class="refresh-button">
+							<i class="fa fa-refresh"></i>
+						</div>
+						<div class="loading-overlay">
+							<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+						</div>
+					</div>
+				</div>
+				<!-- /.col -->
+				<div class="col-sm-6 col-md-3">
+					<div class="panel-stat3 bg-warning">
+						<h2 class="m-top-none" id="orderCount">59300</h2>
+						<h5>Tithe</h5>
+						<i class="fa fa-arrow-circle-o-up fa-lg"></i><span
+							class="m-left-xs">3% Higher than last week</span>
+						<div class="stat-icon">
+							<i class="fa fa-shopping-cart fa-3x"></i>
+						</div>
+						<div class="refresh-button">
+							<i class="fa fa-refresh"></i>
+						</div>
+						<div class="loading-overlay">
+							<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+						</div>
+					</div>
+				</div>
+				<!-- /.col -->
+				<div class="col-sm-6 col-md-3">
+					<div class="panel-stat3 bg-success">
+						<h2 class="m-top-none" id="visitorCount">7596</h2>
+						<h5>Total Visitors</h5>
+						<i class="fa fa-arrow-circle-o-up fa-lg"></i><span
+							class="m-left-xs">15% Higher than last week</span>
+						<div class="stat-icon">
+							<i class="fa fa-bar-chart-o fa-3x"></i>
+						</div>
+						<div class="refresh-button">
+							<i class="fa fa-refresh"></i>
+						</div>
+						<div class="loading-overlay">
+							<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+						</div>
+					</div>
+				</div>
+				<!-- /.col -->
+			</div>
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="panel panel-default">
+						<div class="panel-heading clearfix">
+							<span class="pull-left"><i class="fa fa-bar-chart-o fa-lg"></i>
+								Website Traffic</span>
+							<ul class="tool-bar">
+								<li><a href="index.php#" class="refresh-widget"
+									data-toggle="tooltip" data-placement="bottom" title=""
+									data-original-title="Refresh"><i class="fa fa-refresh"></i></a></li>
+							</ul>
+						</div>
+						<div class="panel-body" id="trafficWidget">
+							<div id="placeholder" class="graph"
+								style="height: 250px; padding: 0px; position: relative;"
+								tabindex="0">
+								<canvas class="flot-base" width="655" height="250"
+									style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 655px; height: 250px;"></canvas>
+								<div class="flot-text"
+									style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);">
+									<div class="flot-x-axis flot-x1-axis xAxis x1Axis"
+										style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;">
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; max-width: 59px; top: 234px; left: 24px; text-align: center;">0</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; max-width: 59px; top: 234px; left: 86px; text-align: center;">1</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; max-width: 59px; top: 234px; left: 148px; text-align: center;">2</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; max-width: 59px; top: 234px; left: 209px; text-align: center;">3</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; max-width: 59px; top: 234px; left: 271px; text-align: center;">4</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; max-width: 59px; top: 234px; left: 333px; text-align: center;">5</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; max-width: 59px; top: 234px; left: 395px; text-align: center;">6</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; max-width: 59px; top: 234px; left: 457px; text-align: center;">7</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; max-width: 59px; top: 234px; left: 518px; text-align: center;">8</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; max-width: 59px; top: 234px; left: 580px; text-align: center;">9</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; max-width: 59px; top: 234px; left: 640px; text-align: center;">10</div>
+									</div>
+									<div class="flot-y-axis flot-y1-axis yAxis y1Axis"
+										style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; display: block;">
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; top: 222px; left: 8px; text-align: right;">0.0</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; top: 178px; left: 8px; text-align: right;">2.5</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; top: 134px; left: 8px; text-align: right;">5.0</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; top: 91px; left: 8px; text-align: right;">7.5</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; top: 47px; left: 2px; text-align: right;">10.0</div>
+										<div class="flot-tick-label tickLabel"
+											style="position: absolute; top: 3px; left: 2px; text-align: right;">12.5</div>
+									</div>
+								</div>
+								<canvas class="flot-overlay" width="655" height="250"
+									style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 655px; height: 250px;"></canvas>
+								<div class="legend">
+									<div
+										style="position: absolute; width: 44px; height: 14px; top: 15px; right: 15px; opacity: 0.85; background-color: rgb(255, 255, 255);">
+									</div>
+									<table
+										style="position: absolute; top: 15px; right: 15px;; font-size: smaller; color: #545454">
+										<tbody>
+											<tr>
+												<td class="legendColorBox"><div
+														style="border: 1px solid #ccc; padding: 1px">
+														<div
+															style="width: 4px; height: 0; border: 5px solid rgb(55, 180, 148); overflow: hidden"></div>
+													</div></td>
+												<td class="legendLabel">Visitor</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer">
+							<div class="row row-merge">
+								<div class="col-xs-3 text-center border-right">
+									<h4 class="no-margin">1232</h4>
+									<small class="text-muted">Visitors</small>
+								</div>
+								<div class="col-xs-3 text-center border-right">
+									<h4 class="no-margin">5421</h4>
+									<small class="text-muted">Orders</small>
+								</div>
+								<div class="col-xs-3 text-center border-right">
+									<h4 class="no-margin">3021</h4>
+									<small class="text-muted">Tickets</small>
+								</div>
+								<div class="col-xs-3 text-center">
+									<h4 class="no-margin">7098</h4>
+									<small class="text-muted">Customers</small>
+								</div>
+							</div>
+							<!-- ./row -->
+						</div>
+						<div class="loading-overlay">
+							<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+						</div>
+					</div>
+					<!-- /panel -->
+
+					<div class="row">
+						<div class="col-md-4 col-sm-4">
+							<div class="panel panel-default panel-stat1 bg-success">
+								<div class="panel-body">
+									<div class="value">99</div>
+									<div class="title">
+										<i class="fa fa-usd"></i> <span class="m-left-xs">Sales</span>
+									</div>
+								</div>
+							</div>
+							<!-- /panel -->
+						</div>
+						<!-- /.col -->
+						<div class="col-md-4 col-sm-4">
+							<div class="panel panel-default panel-stat2 bg-warning">
+								<div class="panel-body">
+									<span class="stat-icon"> <i class="fa fa-bar-chart-o"></i>
+									</span>
+									<div class="pull-right text-right">
+										<div class="value">58</div>
+										<div class="title">New Visits</div>
+									</div>
+								</div>
+							</div>
+							<!-- /panel -->
+						</div>
+						<!-- /.col -->
+						<div class="col-md-4 col-sm-4">
+							<div class="panel panel-default panel-stat2 bg-info">
+								<div class="panel-body">
+									<span class="stat-icon"> <i class="fa fa-envelope"></i>
+									</span>
+									<div class="pull-right text-right">
+										<div class="value">41</div>
+										<div class="title">Emails</div>
+									</div>
+								</div>
+							</div>
+							<!-- /panel -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- /.row -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Work Progress <span class="badge badge-info pull-right"> 4
+								left </span>
+						</div>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Task</th>
+									<th>Progress</th>
+									<th></th>
+									<th>Time</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Bug Fixes</td>
+									<td>
+										<div class="progress progress-striped active"
+											style="height: 8px; margin: 5px 0 0 0;">
+											<div class="progress-bar" style="width: 45%">
+												<span class="sr-only">45% Complete</span>
+											</div>
+										</div>
+									</td>
+									<td>45%</td>
+									<td><span class="badge badge-info">2hr</span></td>
+								</tr>
+								<tr>
+									<td>Mobile Development</td>
+									<td>
+										<div class="progress progress-striped active"
+											style="height: 8px; margin: 5px 0 0 0;">
+											<div class="progress-bar progress-bar-success"
+												style="width: 61%">
+												<span class="sr-only">61% Complete</span>
+											</div>
+										</div>
+									</td>
+									<td>61%</td>
+									<td><span class="badge badge-info">1hr</span></td>
+								</tr>
+								<tr>
+									<td>Unit Testing</td>
+									<td>
+										<div class="progress progress-striped active"
+											style="height: 8px; margin: 5px 0 0 0;">
+											<div class="progress-bar progress-bar-danger"
+												style="width: 97%">
+												<span class="sr-only">97% Complete</span>
+											</div>
+										</div>
+									</td>
+									<td>97%</td>
+									<td><span class="badge badge-info">5m</span></td>
+								</tr>
+								<tr>
+									<td>New frontend layout</td>
+									<td>
+										<div class="progress progress-striped active"
+											style="height: 8px; margin: 5px 0 0 0;">
+											<div class="progress-bar progress-bar-warning"
+												style="width: 18%">
+												<span class="sr-only">18% Complete</span>
+											</div>
+										</div>
+									</td>
+									<td>18%</td>
+									<td><span class="badge badge-info">12hr</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<!-- /panel -->
+					<div class="row">
+						<div class="col-lg-6">
+							<div class="panel panel-default">
+								<div class="panel-heading clearfix">
+									<span class="pull-left"> To Do List <span
+										class="text-success m-left-xs"><i class="fa fa-check"></i></span>
+									</span>
+									<ul class="tool-bar">
+										<li><a href="index.php#" class="refresh-widget"
+											data-toggle="tooltip" data-placement="bottom" title=""
+											data-original-title="Refresh"><i class="fa fa-refresh"></i></a></li>
+										<li><a href="index.php#toDoListWidget"
+											data-toggle="collapse"><i class="fa fa-arrows-v"></i></a></li>
+									</ul>
+								</div>
+								<div class="panel-body no-padding collapse in"
+									id="toDoListWidget">
+									<ul class="list-group task-list no-margin collapse in">
+										<li class="list-group-item selected"><label
+											class="label-checkbox inline"> <input type="checkbox"
+												class="task-finish" checked=""> <span
+												class="custom-checkbox"></span>
+										</label> SEO Optimisation <span class="pull-right"> <a
+												href="index.php#" class="task-del"><i
+													class="fa fa-trash-o fa-lg text-danger"></i></a>
+										</span></li>
+										<li class="list-group-item"><label
+											class="label-checkbox inline"> <input type="checkbox"
+												class="task-finish"> <span class="custom-checkbox"></span>
+										</label> Unit Testing <span class="pull-right"> <a
+												href="index.php#" class="task-del"><i
+													class="fa fa-trash-o fa-lg text-danger"></i></a>
+										</span></li>
+										<li class="list-group-item"><label
+											class="label-checkbox inline"> <input type="checkbox"
+												class="task-finish"> <span class="custom-checkbox"></span>
+										</label> Mobile Development <span class="pull-right"> <a
+												href="index.php#" class="task-del"><i
+													class="fa fa-trash-o fa-lg text-danger"></i></a>
+										</span> <span class="badge badge-success m-right-xs">3</span></li>
+										<li class="list-group-item"><label
+											class="label-checkbox inline"> <input type="checkbox"
+												class="task-finish"> <span class="custom-checkbox"></span>
+										</label> Database Migration <span class="pull-right"> <a
+												href="index.php#" class="task-del"><i
+													class="fa fa-trash-o fa-lg text-danger"></i></a>
+										</span></li>
+										<li class="list-group-item"><label
+											class="label-checkbox inline"> <input type="checkbox"
+												class="task-finish"> <span class="custom-checkbox"></span>
+										</label> New Frontend Layout <span
+											class="label label-warning m-left-xs">PENDING</span> <span
+											class="pull-right"> <a href="index.php#"
+												class="task-del"><i
+													class="fa fa-trash-o fa-lg text-danger"></i></a>
+										</span></li>
+										<li class="list-group-item"><label
+											class="label-checkbox inline"> <input type="checkbox"
+												class="task-finish"> <span class="custom-checkbox"></span>
+										</label> Bug Fixes <span class="label label-danger m-left-xs">IMPORTANT</span>
+											<span class="pull-right"> <a href="index.php#"
+												class="task-del"><i
+													class="fa fa-trash-o fa-lg text-danger"></i></a>
+										</span></li>
+									</ul>
+									<!-- /list-group -->
+								</div>
+								<div class="loading-overlay">
+									<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+								</div>
+							</div>
+							<!-- /panel -->
+						</div>
+						<!-- /.col -->
+						<div class="col-lg-6">
+							<div class="panel panel-default">
+								<div class="panel-heading clearfix">
+									<span class="pull-left">Feeds</span>
+									<ul class="tool-bar">
+										<li><a href="index.php#" class="refresh-widget"
+											data-toggle="tooltip" data-placement="bottom" title=""
+											data-original-title="Refresh"><i class="fa fa-refresh"></i></a></li>
+										<li><a href="index.php#feedList" data-toggle="collapse"><i
+												class="fa fa-arrows-v"></i></a></li>
+									</ul>
+								</div>
+								<ul class="list-group collapse in" id="feedList">
+									<li class="list-group-item clearfix">
+										<div class="activity-icon small">
+											<i class="fa fa-camera"></i>
+										</div>
+										<div class="pull-left m-left-sm">
+											<span>John Doe Add a new photo.</span><br> <small
+												class="text-muted"><i class="fa fa-clock-o"></i> 2m
+												ago</small>
+										</div>
+									</li>
+									<li class="list-group-item clearfix">
+										<div class="activity-icon bg-success small">
+											<i class="fa fa-usd"></i>
+										</div>
+										<div class="pull-left m-left-sm">
+											<span>2 items sold.</span><br> <small class="text-muted"><i
+												class="fa fa-clock-o"></i> 30m ago</small>
+										</div>
+									</li>
+									<li class="list-group-item clearfix">
+										<div class="activity-icon bg-info small">
+											<i class="fa fa-comment"></i>
+										</div>
+										<div class="pull-left m-left-sm">
+											<span>John Doe commented on <a href="index.php#">This
+													Article</a></span><br> <small class="text-muted"><i
+												class="fa fa-clock-o"></i> 1hr ago</small>
+										</div>
+									</li>
+									<li class="list-group-item clearfix">
+										<div class="activity-icon bg-success small">
+											<i class="fa fa-usd"></i>
+										</div>
+										<div class="pull-left m-left-sm">
+											<span>3 items sold.</span><br> <small class="text-muted"><i
+												class="fa fa-clock-o"></i> 2days ago</small>
+										</div>
+									</li>
+								</ul>
+								<!-- /list-group -->
+								<div class="loading-overlay">
+									<i class="loading-icon fa fa-refresh fa-spin fa-lg"></i>
+								</div>
+							</div>
+							<!-- /panel -->
+						</div>
+						<!-- /.col -->
+					</div>
+					<!-- ./row -->
+				</div>
+				<!-- /.col -->
+				<div class="col-lg-4">
+					<div class="panel bg-info fadeInDown animation-delay4">
+						<div class="panel-body">
+							<div id="lineChart" style="height: 150px; position: relative;">
+								<svg height="150" version="1.1" width="297"
+									xmlns="http://www.w3.org/2000/svg"
+									style="overflow: hidden; position: relative; left: -0.328125px;">
+									<desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.2</desc>
+									<defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+									<text x="33.5" y="111" text-anchor="end"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text>
+									<text x="33.5" y="89.5" text-anchor="end"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">25</tspan></text>
+									<text x="33.5" y="68" text-anchor="end"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">50</tspan></text>
+									<text x="33.5" y="46.5" text-anchor="end"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">75</tspan></text>
+									<text x="33.5" y="25" text-anchor="end"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">100</tspan></text>
+									<text x="272" y="123.5" text-anchor="middle"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal"
+										transform="matrix(1,0,0,1,0,7)">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2012</tspan></text>
+									<text x="196.70104974897308" y="123.5" text-anchor="middle"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal"
+										transform="matrix(1,0,0,1,0,7)">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2010</tspan></text>
+									<text x="121.29895025102694" y="123.5" text-anchor="middle"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal"
+										transform="matrix(1,0,0,1,0,7)">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2008</tspan></text>
+									<text x="46" y="123.5" text-anchor="middle"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal"
+										transform="matrix(1,0,0,1,0,7)">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2006</tspan></text>
+									<path fill="none" stroke="#538792"
+										d="M46,93.8C55.41236878137837,90.575,74.2371063441351,85.2,83.64947512551348,80.9C93.06184390689184,76.60000000000001,111.88658146964858,62.620588235294115,121.29895025102694,59.4C130.7371063441351,56.17058823529412,149.61341853035142,56.1764705882353,159.0515746234596,55.1C168.46394340483798,54.0264705882353,187.2886809675947,52.95,196.70104974897308,50.800000000000004C206.11341853035145,48.650000000000006,224.93815609310818,40.05000000000001,234.35052487448655,37.900000000000006C243.7628936558649,35.75000000000001,262.58763121862165,34.675,272,33.599999999999994"
+										stroke-width="3"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+									<path fill="none" stroke="#8cb4bc"
+										d="M46,85.2C55.41236878137837,81.975,74.2371063441351,75.52499999999999,83.64947512551348,72.3C93.06184390689184,69.075,111.88658146964858,62.620588235294115,121.29895025102694,59.4C130.7371063441351,56.17058823529412,149.61341853035142,45.423529411764704,159.0515746234596,46.5C168.46394340483798,47.5735294117647,187.2886809675947,68.5375,196.70104974897308,68C206.11341853035145,67.4625,224.93815609310818,47.575,234.35052487448655,42.2C243.7628936558649,36.825,262.58763121862165,29.3,272,25"
+										stroke-width="3"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+									<circle cx="46" cy="93.8" r="7" fill="#538792" stroke="#ffffff"
+										stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="83.64947512551348" cy="80.9" r="4" fill="#538792"
+										stroke="#ffffff" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="121.29895025102694" cy="59.4" r="4" fill="#538792"
+										stroke="#ffffff" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="159.0515746234596" cy="55.1" r="4" fill="#538792"
+										stroke="#ffffff" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="196.70104974897308" cy="50.800000000000004" r="4"
+										fill="#538792" stroke="#ffffff" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="234.35052487448655" cy="37.900000000000006" r="4"
+										fill="#538792" stroke="#ffffff" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="272" cy="33.599999999999994" r="4" fill="#538792"
+										stroke="#ffffff" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="46" cy="85.2" r="7" fill="#8cb4bc" stroke="#ffffff"
+										stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="83.64947512551348" cy="72.3" r="4" fill="#8cb4bc"
+										stroke="#ffffff" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="121.29895025102694" cy="59.4" r="4" fill="#8cb4bc"
+										stroke="#ffffff" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="159.0515746234596" cy="46.5" r="4" fill="#8cb4bc"
+										stroke="#ffffff" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="196.70104974897308" cy="68" r="4" fill="#8cb4bc"
+										stroke="#ffffff" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="234.35052487448655" cy="42.2" r="4" fill="#8cb4bc"
+										stroke="#ffffff" stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle>
+									<circle cx="272" cy="25" r="4" fill="#8cb4bc" stroke="#ffffff"
+										stroke-width="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></circle></svg>
+								<div class="morris-hover morris-default-style"
+									style="left: 11px; top: 0px;">
+									<div class="morris-hover-row-label">2006</div>
+									<div class="morris-hover-point" style="color: #8CB4BC">
+										Item A: 30</div>
+									<div class="morris-hover-point" style="color: #538792">
+										Item B: 20</div>
+								</div>
+							</div>
+							<div class="pull-right text-right">
+								<strong class="font-14">Balance $3210</strong><br> <span><i
+									class="fa fa-shopping-cart"></i> Total Sales 867</span>
+								<div class="seperator"></div>
+							</div>
+						</div>
+						<div class="panel-footer">
+							<div class="row">
+								<div class="col-xs-4">
+									Sales in June <strong class="block">$664</strong>
+								</div>
+								<!-- /.col -->
+								<div class="col-xs-4">
+									Sales in July <strong class="block">$731</strong>
+								</div>
+								<!-- /.col -->
+								<div class="col-xs-4">
+									Sales in August <strong class="block">$912</strong>
+								</div>
+								<!-- /.col -->
+							</div>
+							<!-- /.row -->
+						</div>
+					</div>
+					<!-- /panel -->
+
+					<div class="panel bg-success fadeInDown animation-delay5">
+						<div class="panel-body">
+							<div id="barChart" style="height: 150px; position: relative;">
+								<svg height="150" version="1.1" width="297"
+									xmlns="http://www.w3.org/2000/svg"
+									style="overflow: hidden; position: relative; left: -0.328125px;">
+									<desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.2</desc>
+									<defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+									<text x="33.5" y="111" text-anchor="end"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">0</tspan></text>
+									<text x="33.5" y="89.5" text-anchor="end"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">25</tspan></text>
+									<text x="33.5" y="68" text-anchor="end"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">50</tspan></text>
+									<text x="33.5" y="46.5" text-anchor="end"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">75</tspan></text>
+									<text x="33.5" y="25" text-anchor="end"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: end; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">100</tspan></text>
+									<text x="255.85714285714286" y="123.5" text-anchor="middle"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal"
+										transform="matrix(1,0,0,1,0,7)">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2012</tspan></text>
+									<text x="159" y="123.5" text-anchor="middle"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal"
+										transform="matrix(1,0,0,1,0,7)">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2009</tspan></text>
+									<text x="62.14285714285714" y="123.5" text-anchor="middle"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#ffffff"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 12px; line-height: normal; font-family: sans-serif;"
+										font-size="12px" font-family="sans-serif" font-weight="normal"
+										transform="matrix(1,0,0,1,0,7)">
+									<tspan dy="4"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">2006</tspan></text>
+									<rect x="50.035714285714285" y="25" width="10.607142857142858"
+										height="86" r="0" rx="0" ry="0" fill="#5ee1b1" stroke="#000"
+										stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="63.64285714285714" y="33.599999999999994"
+										width="10.607142857142858" height="77.4" r="0" rx="0" ry="0"
+										fill="#3bc894" stroke="#000" stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="82.32142857142857" y="46.5" width="10.607142857142858"
+										height="64.5" r="0" rx="0" ry="0" fill="#5ee1b1" stroke="#000"
+										stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="95.92857142857143" y="55.1" width="10.607142857142858"
+										height="55.9" r="0" rx="0" ry="0" fill="#3bc894" stroke="#000"
+										stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="114.60714285714286" y="68" width="10.607142857142858"
+										height="43" r="0" rx="0" ry="0" fill="#5ee1b1" stroke="#000"
+										stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="128.21428571428572" y="76.6"
+										width="10.607142857142858" height="34.400000000000006" r="0"
+										rx="0" ry="0" fill="#3bc894" stroke="#000" stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="146.89285714285714" y="46.5"
+										width="10.607142857142858" height="64.5" r="0" rx="0" ry="0"
+										fill="#5ee1b1" stroke="#000" stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="160.5" y="55.1" width="10.607142857142858"
+										height="55.9" r="0" rx="0" ry="0" fill="#3bc894" stroke="#000"
+										stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="179.17857142857142" y="68" width="10.607142857142858"
+										height="43" r="0" rx="0" ry="0" fill="#5ee1b1" stroke="#000"
+										stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="192.78571428571428" y="76.6"
+										width="10.607142857142858" height="34.400000000000006" r="0"
+										rx="0" ry="0" fill="#3bc894" stroke="#000" stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="211.4642857142857" y="46.5" width="10.607142857142858"
+										height="64.5" r="0" rx="0" ry="0" fill="#5ee1b1" stroke="#000"
+										stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="225.07142857142856" y="55.1"
+										width="10.607142857142858" height="55.9" r="0" rx="0" ry="0"
+										fill="#3bc894" stroke="#000" stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="243.75" y="25" width="10.607142857142858" height="86"
+										r="0" rx="0" ry="0" fill="#5ee1b1" stroke="#000"
+										stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect>
+									<rect x="257.35714285714283" y="33.599999999999994"
+										width="10.607142857142858" height="77.4" r="0" rx="0" ry="0"
+										fill="#3bc894" stroke="#000" stroke-width="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></rect></svg>
+								<div class="morris-hover morris-default-style"
+									style="left: 216.857px; top: 37px;">
+									<div class="morris-hover-row-label">2012</div>
+									<div class="morris-hover-point" style="color: #5EE1B1">
+										Item C: 100</div>
+									<div class="morris-hover-point" style="color: #3BC894">
+										Item D: 90</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer">
+							<div class="row">
+								<div class="col-xs-6">
+									<h4 class="no-margin">Total Earnings</h4>
+								</div>
+								<!-- /.col -->
+								<div class="col-xs-6 text-right">
+									<h4 class="no-margin">$17,531</h4>
+								</div>
+								<!-- /.col -->
+							</div>
+							<!-- /.row -->
+						</div>
+					</div>
+					<!-- /panel -->
+
+					<div class="panel bg-danger">
+						<div class="panel-body">
+							<h4>Database Migration</h4>
+							<div class="progress progress-striped active"
+								style="height: 8px; margin: 5px 0 0 0;">
+								<div class="progress-bar progress-bar-danger" style="width: 65%">
+									<span class="sr-only">65% Complete</span>
+								</div>
+							</div>
+							<strong class="pull-left m-top-xs">65% Complete</strong> <strong
+								class="pull-right m-top-xs">1hr left</strong>
+						</div>
+					</div>
+					<!-- /panel -->
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div id="donutChart" style="height: 250px;">
+								<svg height="250" version="1.1" width="297"
+									xmlns="http://www.w3.org/2000/svg"
+									style="overflow: hidden; position: relative; left: -0.328125px;">
+									<desc style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Created with Raphaël 2.1.2</desc>
+									<defs style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></defs>
+									<path fill="none" stroke="#f3ce85"
+										d="M148.5,201.66666666666669A76.66666666666667,76.66666666666667,0,0,0,217.63132139939748,158.14571132667072"
+										stroke-width="2" opacity="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></path>
+									<path fill="#f3ce85" stroke="#ffffff"
+										d="M148.5,204.66666666666669A79.66666666666667,79.66666666666667,0,0,0,220.33646006285215,159.44271742206217L247.6884176600051,172.55689016435363A110,110,0,0,1,148.5,235Z"
+										stroke-width="3"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+									<path fill="none" stroke="#65cea7"
+										d="M217.63132139939748,158.14571132667072A76.66666666666667,76.66666666666667,0,0,0,99.43670913435906,66.0884453845318"
+										stroke-width="2" opacity="1"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 1;"></path>
+									<path fill="#65cea7" stroke="#ffffff"
+										d="M220.33646006285215,159.44271742206217A79.66666666666667,79.66666666666667,0,0,0,97.51684123092093,63.78321063870913L74.9050637015386,36.6326680767977A115,115,0,0,1,252.1969820990962,174.71856699000608Z"
+										stroke-width="3"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+									<path fill="none" stroke="#fc8675"
+										d="M99.43670913435906,66.0884453845318A76.66666666666667,76.66666666666667,0,0,0,148.4759144567186,201.66666288331834"
+										stroke-width="2" opacity="0"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); opacity: 0;"></path>
+									<path fill="#fc8675" stroke="#ffffff"
+										d="M97.51684123092093,63.78321063870913A79.66666666666667,79.66666666666667,0,0,0,148.47497197893804,204.6666627352743L148.4654424813789,234.99999457171762A110,110,0,0,1,78.10484354060213,40.47472598650215Z"
+										stroke-width="3"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+									<text x="148.5" y="115" text-anchor="middle"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#000000"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: 800; font-stretch: normal; font-size: 15px; line-height: normal; font-family: Arial;"
+										font-size="15px" font-weight="800"
+										transform="matrix(1.1897,0,0,1.1897,-28.1638,-23.8966)"
+										stroke-width="0.8405797101449275">
+									<tspan dy="6"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">In-Store Sales</tspan></text>
+									<text x="148.5" y="135" text-anchor="middle"
+										font="10px &quot;Arial&quot;" stroke="none" fill="#000000"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0); text-anchor: middle; font-style: normal; font-variant: normal; font-weight: normal; font-stretch: normal; font-size: 14px; line-height: normal; font-family: Arial;"
+										font-size="14px"
+										transform="matrix(1.5972,0,0,1.5972,-88.6875,-75.8472)"
+										stroke-width="0.6260869565217391">
+									<tspan dy="5"
+										style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);">3,091</tspan></text></svg>
+							</div>
+							<div class="panel-group" id="accordion">
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse"
+												data-parent="#accordion" href="index.php#collapseOne">
+												IN-STORE Sales <span class="badge badge-success pull-right">75%</span>
+											</a>
+										</h4>
+									</div>
+									<div id="collapseOne" class="panel-collapse collapse">
+										<div class="panel-body">Raw denim you probably haven't
+											heard of them jean shorts Austin. Nesciunt tofu stumptown
+											aliqua, retro synth master cleanse.</div>
+									</div>
+								</div>
+								<!-- panel -->
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse"
+												data-parent="#accordion" href="index.php#collapseTwo">
+												DOWMLOAD Sales </a>
+										</h4>
+									</div>
+									<div id="collapseTwo" class="panel-collapse collapse">
+										<div class="panel-body">Raw denim you probably haven't
+											heard of them jean shorts Austin. Nesciunt tofu stumptown
+											aliqua, retro synth master cleanse.</div>
+									</div>
+								</div>
+								<!-- panel -->
+								<div class="panel panel-default">
+									<div class="panel-heading">
+										<h4 class="panel-title">
+											<a class="accordion-toggle" data-toggle="collapse"
+												data-parent="#accordion" href="index.php#collapseThree">
+												MAIL-ORDER Sales <span class="badge badge-danger pull-right"><i
+													class="fa fa-arrow-down"></i> 3%</span>
+											</a>
+										</h4>
+									</div>
+									<div id="collapseThree" class="panel-collapse collapse">
+										<div class="panel-body">Raw denim you probably haven't
+											heard of them jean shorts Austin. Nesciunt tofu stumptown
+											aliqua, retro synth master cleanse.</div>
+									</div>
+								</div>
+								<!-- panel -->
+							</div>
+							<!-- panel-group -->
+						</div>
+					</div>
+					<!-- /panel -->
+				</div>
+				<!-- /.col -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.padding-md -->
+
+
+
+	</div>
+
+</body>
+</html>

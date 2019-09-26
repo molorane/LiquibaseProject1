@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<head th:replace="fragments/header :: head">
+ <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE">Task List</title>
+</head>
+
+<body>
+
+	<a href="#" id="theme-setting-icon"><i class="fa fa-cog fa-lg"></i></a>
+	<div id="theme-setting">
+		<div class="title">
+			<strong class="no-margin">Skin Color</strong>
+		</div>
+		<div class="theme-box">
+			<a class="theme-color" style="background:#323447" id="default"></a>
+			<a class="theme-color" style="background:#efefef" id="skin-1"></a>
+			<a class="theme-color" style="background:#a93922" id="skin-2"></a>
+			<a class="theme-color" style="background:#3e6b96" id="skin-3"></a>
+			<a class="theme-color" style="background:#635247" id="skin-4"></a>
+			<a class="theme-color" style="background:#3a3a3a" id="skin-5"></a>
+			<a class="theme-color" style="background:#495B6C" id="skin-6"></a>
+		</div>
+		<div class="title">
+			<strong class="no-margin">Sidebar Menu</strong>
+		</div>
+		<div class="theme-box">
+			<label class="label-checkbox">
+				<input type="checkbox" id="fixedSidebar">
+				<span class="custom-checkbox"></span>
+				Fixed Sidebar
+			</label>
+		</div>
+	</div><!-- /theme-setting -->
+
+	<div class="preload" id="wrapper">
+
+		<div th:insert="fragments/topnav :: topnav"></div>
+
+		<div th:insert="fragments/asidenav :: asidenav (${user.roles[0].toString()}) "></div>
+
+		<div id="main-container">
+			<div layout:fragment="content">
+			
+			</div>
+		</div>
+
+		<div th:insert="fragments/footer :: footer"></div>
+
+	</div>
+
+	<a href="" id="scroll-to-top" class="hidden-print"><i
+		class="fa fa-chevron-up"></i></a>
+		
+	
+		
+	
+
+	<!-- Logout confirmation -->
+	<div class="custom-popup width-100" id="logoutConfirm">
+		<div class="padding-md">
+			<h4 class="m-top-none">Do you want to logout?</h4>
+		</div>
+
+		<div class="text-center">
+		
+		<form method="post" th:action="@{/logout}">
+			<div class="col text-center">
+				<button class="btn btn-danger">Logout</button>
+			<a class="btn btn-success logoutConfirm_close">Cancel</a>
+		    </div>
+		</form>
+		</div>
+	</div>
+
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<!-- Jquery -->
+	<script th:src="@{js/jquery/jquery-1.10.2.min.js}"></script>
+
+	<!-- Bootstrap -->
+	<script th:src="@{/js/bootstrap.js}"></script>
+
+
+	<!-- Morris -->
+	<script th:src="@{/js/rapheal.min.js}"></script>
+	<script th:src="@{/js/morris.min.js}"></script>
+
+	<!-- Colorbox -->
+	<script th:src="@{/js/jquery/jquery.colorbox.min.js}"></script>
+
+	<!-- Sparkline -->
+	<script th:src="@{/js/jquery/jquery.sparkline.min.js}"></script>
+
+	<!-- Pace -->
+	<script th:src="@{/js/pace.js}"></script>
+
+	<!-- Popup Overlay -->
+	<script th:src="@{/js/jquery/jquery.popupoverlay.min.js}"></script>
+
+	<!-- Slimscroll -->
+	<script th:src="@{/js/jquery/jquery.slimscroll.min.js}"></script>
+
+	<!-- Modernizr -->
+	<script th:src="@{/js/modernizr.min.js}"></script>
+
+	<!-- Cookie -->
+	<script th:src="@{/js/jquery/jquery.cookie.min.js}"></script>
+
+	<!-- Endless -->
+	<script th:src="@{/js/endless/endless.js}"></script>
+
+	
+	<!-- Flot -->
+	<script th:src="@{/js/jquery/jquery.flot.min.js}"></script>
+	<script th:src="@{/js/endless/endless_dashboard.js}"></script>
+</body>
+
+</html>

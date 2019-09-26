@@ -1,0 +1,219 @@
+<databaseChangeLog
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet author="${author}" id="dbtables">
+	
+		<createTable tableName="${roleTable}">
+			<column name="role_id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="role_name" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="role_desc" type="VARCHAR(50)" />
+		</createTable>
+		
+		<createTable tableName="${userTable}">
+			<column name="user_id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="username" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="email" type="VARCHAR(60)">
+				<constraints nullable="false" />
+			</column>
+			<column name="password" type="VARCHAR(150)">
+				<constraints nullable="false" />
+			</column>
+			<column name="status" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="is_locked" defaultValueNumeric="0" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="is_active" defaultValueNumeric="1" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="created_date" type="DATETIME" defaultValueComputed="NOW()" />
+			<column name="expiry_date" type="date">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable tableName="${userRoleTable}">
+			<column name="user_id" type="INT">
+				 <constraints nullable="false" foreignKeyName="fk_user_role_user_id" references="${userTable}(user_id)"/>
+			</column>
+			<column name="role_id" defaultValueNumeric="0" type="INT">
+				 <constraints nullable="false" foreignKeyName="fk_user_role_role_id" references="${roleTable}(role_id)"/>
+			</column>
+		</createTable>
+		
+		<createTable tableName="${userInfoTable}">
+			<column name="user_id" type="INT">
+				 <constraints nullable="false" primaryKey="true" foreignKeyName="fk_user_info_user_id" references="${userTable}(user_id)"/>
+			</column>
+			<column name="last_name" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="first_name" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="other_name" type="VARCHAR(50)" />
+			<column name="dob" type="DATE">
+				<constraints nullable="false" />
+			</column>
+			<column name="profile" type="VARCHAR(100)" />
+		</createTable>
+		
+		<createTable tableName="${denominationTable}">
+			<column name="id" type="INT">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(100)">
+				 <constraints nullable="false" />
+			</column>
+			<column name="short_name" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="country" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="founder" type="VARCHAR(50)" />
+			<column name="start_date" type="DATE">
+				<constraints nullable="false" />
+			</column>
+			<column name="hq" type="VARCHAR(100)" />
+			<column name="gps_lat" type="DOUBLE" />
+			<column name="gps_long" type="DOUBLE" />
+			<column name="logo" type="VARCHAR(40)" />
+			<column name="mission" type="VARCHAR(100)" />
+			<column name="updated_by" type="VARCHAR(20)" />
+		</createTable>
+		
+		<createTable tableName="${continentTable}">
+			<column name="cont_id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="cont_name" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable tableName="${countryTable}">
+			<column name="count_id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="count_name" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="cont_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_country_continent" references="${continentTable}(cont_id)" />
+			</column>
+		</createTable>
+		
+		<createTable tableName="${qualificationTable}">
+			<column name="qual_id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="qualification" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable tableName="${courseTable}">
+			<column name="course_id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="course" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable tableName="${institution_typeTable}">
+			<column name="institution_type_id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="institution_type" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable tableName="${institutionTable}">
+			<column name="institution_id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="institution" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+			<column name="institution_type_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_institution_type_id" references="${institution_typeTable}(institution_type_id)" />
+			</column>
+			<column name="count_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_institution_country_id" references="${countryTable}(count_id)" />
+			</column>
+		</createTable>
+		
+		<createTable tableName="${institution_branchTable}">
+			<column name="institution_branch_id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="institution_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_institution_branch" references="${institutionTable}(institution_id)" />
+			</column>
+			<column name="branch_name" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable tableName="${statusTable}">
+			<column name="status_id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="status" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable tableName="${studentTable}">
+			<column name="user_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_student_user_id" references="${userTable}(user_id)" />
+			</column>
+			<column name="institution_branch_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_student_institution_branch_id" references="${institution_branchTable}(institution_branch_id)" />
+			</column>
+			<column name="course_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_student_course_id" references="${courseTable}(course_id)" />
+			</column>
+			<column name="qual_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_student_qual_id" references="${qualificationTable}(qual_id)" />
+			</column>
+			<column name="completed" type="INT">
+				<constraints nullable="false" />
+			</column>
+			<column name="status_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_student_status_id" references="${statusTable}(status_id)" />
+			</column>
+			<column name="recorded_by" type="INT">
+				<constraints nullable="true" foreignKeyName="fk_student_recorded_by_id" references="${userTable}(user_id)" />
+			</column>
+		</createTable>
+		
+		<addPrimaryKey  columnNames="user_id, role_id"
+            			constraintName="pk_user_role"  tableName="${userRoleTable}" />
+        
+        <addUniqueConstraint  columnNames="institution_id, branch_name"
+            			constraintName="uk_institution_branch"  tableName="${institution_branchTable}" />
+            			
+        <addPrimaryKey  columnNames="user_id, institution_branch_id,course_id,qual_id,completed"
+            			constraintName="pk_student_institution"  tableName="${studentTable}" />
+
+
+	</changeSet>
+
+</databaseChangeLog>

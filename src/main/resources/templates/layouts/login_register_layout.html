@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title layout:title-pattern="$CONTENT_TITLE - $LAYOUT_TITLE">Deeper Christian Life Ministry</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="lifehackher">
+
+<link rel="shortcut icon" type="text/css" th:href="@{img/index.png}" />
+<!-- Bootstrap core CSS -->
+<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet">
+
+<!-- Endless -->
+<link th:href="@{/css/endless.min.css}" rel="stylesheet">
+
+</head>
+
+<body class=" pace-done">
+
+	<div class="pace  pace-inactive">
+		<div class="pace-progress" data-progress-text="100%"
+			data-progress="99" style="width: 100%;">
+			<div class="pace-progress-inner"></div>
+		</div>
+		<div class="pace-activity"></div>
+	</div>
+
+	<div class="login-wrapper">
+		<div class="text-center">
+			<h2 class="fadeInUp animation-delay8" style="font-weight: bold">
+				<img alt="DLBC" th:src="@{img/dclm-logo.png}" width="338"
+					height="60">
+			</h2>
+		</div>
+		<div class="login-widget animation-delay1">
+
+			<div layout:fragment="content"></div>
+
+		</div>
+		<!-- /login-widget -->
+	</div>
+	<!-- /login-wrapper -->
+
+
+
+	<!-- Logout confirmation -->
+	<div class="custom-popup width-100" id="logoutConfirm">
+		<div class="padding-md">
+			<h4 class="m-top-none">Do you want to logout?</h4>
+		</div>
+
+		<div class="text-center">
+
+			<form method="post" th:action="@{/logout}">
+				<div class="col text-center">
+					<button class="btn btn-danger">Logout</button>
+					<a class="btn btn-success logoutConfirm_close">Cancel</a>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- Jquery -->
+	<script th:src="@{js/jquery/jquery-1.10.2.min.js}"></script>
+
+	<!-- Bootstrap -->
+	<script th:src="@{js/bootstrap.min.js}"></script>
+
+	<!-- Modernizr -->
+	<script th:src="@{js/modernizr.min.js}"></script>
+
+	<!-- Pace -->
+	<script th:src="@{js/pace.min.js}"></script>
+
+	<!-- Popup Overlay -->
+	<script th:src="@{js/jquery/jquery.popupoverlay.min.js}"></script>
+
+	<!-- Slimscroll -->
+	<script th:src="@{js/jquery/jquery.slimscroll.min.js}"></script>
+
+	<!-- Cookie -->
+	<script th:src="@{js/jquery/jquery.cookie.min.js}"></script>
+
+	<!-- Endless -->
+	<script th:src="@{js/endless/endless.js}"></script>
+</body>
+
+</html>

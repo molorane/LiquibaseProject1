@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<aside class="fixed skin-6" th:fragment="asidenav(role)">
+	<div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+	<div class="sidebar-inner scrollable-sidebar" style="overflow: hidden; width: auto; height: 100%;">
+		<div class="size-toggle">
+			<a class="btn btn-sm" id="sizeToggle">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="btn btn-sm pull-right logoutConfirm_open"  href="#logoutConfirm">
+				<i class="fa fa-power-off"></i>
+			</a>
+		</div><!-- /size-toggle -->	
+		<div class="user-block clearfix">
+			<img th:src="@{|/img/profiles/${user.userInfo.profile}|}"  alt="User profile">
+			<div class="detail">
+				<strong>[[${user.userInfo.user_id}]]</strong>
+				<ul class="list-inline">
+					<li><a href="profile">Profile</a></li>
+					<li><a href="inbox" class="no-margin">Inbox</a></li>
+				</ul>
+			</div>
+		</div><!-- /user-block -->
+		<div class="main-menu">
+			<ul>
+				<li class="active">
+					<a href="home">
+						<span class="menu-icon">
+							<i class="fa fa-desktop fa-lg"></i> 
+						</span>
+						<span class="text">
+							Dashboard
+						</span>
+						<span class="menu-hover"></span>
+					</a>
+				</li>
+				<li class="active">
+					<a href="home">
+						<span class="menu-icon">
+							<i class="fa fa-user fa-lg"></i> 
+						</span>
+						<span class="text">
+							Profile
+						</span>
+						<span class="menu-hover"></span>
+					</a>
+				</li>
+				<li class="openable" th:if="${role == 'GS'}">
+					<a href="index.php#">
+						<span class="menu-icon">
+							<i class="fa fa-folder fa-lg"></i> 
+						</span>
+						<span class="text">
+							GS
+						</span>
+						<span class="menu-hover"></span>
+					</a>
+					<ul class="submenu">
+						<li><a href="ui_element.php"><span class="submenu-label">UI Features</span></a></li>
+						<li><a href="button.php"><span class="submenu-label">Button &amp; Icons</span></a></li>
+						<li><a href="tab.php"><span class="submenu-label">Tab</span></a></li>
+						<li><a href="nestable_list.php"><span class="submenu-label">Nestable List</span></a></li>
+						<li><a href="calendar.php"><span class="submenu-label">Calendar</span></a></li>
+						<li><a href="table.php"><span class="submenu-label">Table</span></a></li>
+						<li><a href="widget.php"><span class="submenu-label">Widget</span></a></li>
+						<li><a href="form_element.php"><span class="submenu-label">Form Element</span></a></li>
+						<li><a href="form_wizard.php"><span class="submenu-label">Form Wizard</span></a></li>
+					</ul>
+				</li>
+				<li class="openable" th:if="${role == 'NATIONAL_OVERSEER'}">
+					<a href="index.php#">
+						<span class="menu-icon">
+							<i class="fa fa-folder fa-lg"></i> 
+						</span>
+						<span class="text">
+							National Overseer
+						</span>
+						<span class="menu-hover"></span>
+					</a>
+					<ul class="submenu">
+						<li><a href="ui_element.php"><span class="submenu-label">UI Features</span></a></li>
+						<li><a href="button.php"><span class="submenu-label">Button &amp; Icons</span></a></li>
+						<li><a href="tab.php"><span class="submenu-label">Tab</span></a></li>
+						<li><a href="nestable_list.php"><span class="submenu-label">Nestable List</span></a></li>
+						<li><a href="calendar.php"><span class="submenu-label">Calendar</span></a></li>
+						<li><a href="table.php"><span class="submenu-label">Table</span></a></li>
+						<li><a href="widget.php"><span class="submenu-label">Widget</span></a></li>
+						<li><a href="form_element.php"><span class="submenu-label">Form Element</span></a></li>
+						<li><a href="form_wizard.php"><span class="submenu-label">Form Wizard</span></a></li>
+					</ul>
+				</li>
+				<li class="openable open"  th:if="${role == 'LOCATION_PASTOR'}">
+					<a href="index.php#">
+						<span class="menu-icon">
+							<i class="fa fa-folder fa-lg"></i> 
+						</span>
+						<span class="text">
+							Location Pastor
+						</span>
+						<span class="menu-hover"></span>
+					</a>
+					<ul class="submenu">
+						<li><a href="login.php"><span class="submenu-label">Sign in</span></a></li>
+						<li><a href="register.php"><span class="submenu-label">Sign up</span></a></li>
+						<li><a href="lock_screen.php"><span class="submenu-label">Lock Screen</span></a></li>
+						<li><a href="profile.php"><span class="submenu-label">Profile</span></a></li>
+						<li><a href="blog.php"><span class="submenu-label">Blog</span></a></li>
+						<li><a href="single_post.php"><span class="submenu-label">Single Post</span></a></li>
+						<li><a href="landing.php"><span class="submenu-label">Landing</span></a></li>
+						<li><a href="search_result.php"><span class="submenu-label">Search Result</span></a></li>
+						<li><a href="chat.php"><span class="submenu-label">Chat Room</span></a></li>
+						<li><a href="movie.php"><span class="submenu-label">Movie Gallery</span></a></li>
+						<li><a href="pricing.php"><span class="submenu-label">Pricing</span></a></li>
+						<li><a href="invoice.php"><span class="submenu-label">Invoice</span></a></li>
+						<li><a href="faq.php"><span class="submenu-label">FAQ</span></a></li>
+						<li><a href="contact.php"><span class="submenu-label">Contact</span></a></li>
+						<li><a href="error404.php"><span class="submenu-label">Error404</span></a></li>
+						<li><a href="error500.php"><span class="submenu-label">Error500</span></a></li>
+						<li><a href="blank.php"><span class="submenu-label">Blank</span></a></li>
+					</ul>
+				</li>
+				
+				<li class="openable" th:if="${role == 'TREASURY'}">
+					<a href="timeline.php">
+						<span class="menu-icon">
+							<i class="fa fa-folder fa-lg"></i> 
+						</span>
+						<span class="text">
+							Treasury
+						</span>
+						<span class="menu-hover"></span>
+					</a>
+					<ul class="submenu">
+						<li><a href="ui_element.php"><span class="submenu-label">UI Features</span></a></li>
+						<li><a href="button.php"><span class="submenu-label">Button &amp; Icons</span></a></li>
+						<li><a href="tab.php"><span class="submenu-label">Tab</span></a></li>
+						<li><a href="nestable_list.php"><span class="submenu-label">Nestable List</span></a></li>
+						<li><a href="calendar.php"><span class="submenu-label">Calendar</span></a></li>
+						<li><a href="table.php"><span class="submenu-label">Table</span></a></li>
+						<li><a href="widget.php"><span class="submenu-label">Widget</span></a></li>
+						<li><a href="form_element.php"><span class="submenu-label">Form Element</span></a></li>
+						<li><a href="form_wizard.php"><span class="submenu-label">Form Wizard</span></a></li>
+					</ul>
+				</li>
+				<li class="openable"  th:if="${role == 'CAMPUS_OVERSEER'}">
+					<a href="timeline.php">
+						<span class="menu-icon">
+							<i class="fa fa-folder fa-lg"></i> 
+						</span>
+						<span class="text">
+							Campus Overseer
+						</span>
+						<span class="menu-hover"></span>
+					</a>
+					<ul class="submenu">
+						<li><a href="ui_element.php"><span class="submenu-label">UI Features</span></a></li>
+						<li><a href="button.php"><span class="submenu-label">Button &amp; Icons</span></a></li>
+						<li><a href="tab.php"><span class="submenu-label">Tab</span></a></li>
+						<li><a href="nestable_list.php"><span class="submenu-label">Nestable List</span></a></li>
+						<li><a href="calendar.php"><span class="submenu-label">Calendar</span></a></li>
+						<li><a href="table.php"><span class="submenu-label">Table</span></a></li>
+						<li><a href="widget.php"><span class="submenu-label">Widget</span></a></li>
+						<li><a href="form_element.php"><span class="submenu-label">Form Element</span></a></li>
+						<li><a href="form_wizard.php"><span class="submenu-label">Form Wizard</span></a></li>
+					</ul>
+				</li>
+				<li class="openable" th:if="${role == 'SECRETARY'}">
+					<a href="timeline.php">
+						<span class="menu-icon">
+							<i class="fa fa-folder fa-lg"></i> 
+						</span>
+						<span class="text">
+							Secretary
+						</span>
+						<span class="menu-hover"></span>
+					</a>
+					<ul class="submenu">
+						<li><a href="ui_element.php"><span class="submenu-label">UI Features</span></a></li>
+						<li><a href="button.php"><span class="submenu-label">Button &amp; Icons</span></a></li>
+						<li><a href="tab.php"><span class="submenu-label">Tab</span></a></li>
+						<li><a href="nestable_list.php"><span class="submenu-label">Nestable List</span></a></li>
+						<li><a href="calendar.php"><span class="submenu-label">Calendar</span></a></li>
+						<li><a href="table.php"><span class="submenu-label">Table</span></a></li>
+						<li><a href="widget.php"><span class="submenu-label">Widget</span></a></li>
+						<li><a href="form_element.php"><span class="submenu-label">Form Element</span></a></li>
+						<li><a href="form_wizard.php"><span class="submenu-label">Form Wizard</span></a></li>
+					</ul>
+				</li>
+				<li class="openable">
+					<a href="index.php#">
+						<span class="menu-icon">
+							<i class="fa fa-university fa-lg"></i> 
+						</span>
+						<span class="text">
+							Multi-Level menu
+						</span>
+						<span class="menu-hover"></span>
+					</a>
+					<ul class="submenu">
+						<li class="openable">
+							<a href="index.php#">
+								<span class="submenu-label">menu 2.1</span>
+								<span class="badge badge-danger bounceIn animation-delay1 pull-right">3</span>
+							</a>
+							<ul class="submenu third-level">
+								<li><a href="index.php#"><span class="submenu-label">menu 3.1</span></a></li>
+								<li><a href="index.php#"><span class="submenu-label">menu 3.2</span></a></li>
+								<li class="openable">
+									<a href="index.php#">
+										<span class="submenu-label">menu 3.3</span>
+										<span class="badge badge-danger bounceIn animation-delay1 pull-right">2</span>
+									</a>
+									<ul class="submenu fourth-level">
+										<li><a href="index.php#"><span class="submenu-label">menu 4.1</span></a></li>
+										<li><a href="index.php#"><span class="submenu-label">menu 4.2</span></a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="openable">
+							<a href="index.php#">
+								<span class="submenu-label">menu 2.2</span>
+								<span class="badge badge-success bounceIn animation-delay2 pull-right">3</span>
+							</a>
+							<ul class="submenu third-level">
+								<li class="openable">
+									<a href="index.php#">
+										<span class="submenu-label">menu 3.1</span>
+										<span class="badge badge-success bounceIn animation-delay1 pull-right">2</span>
+									</a>
+									<ul class="submenu fourth-level">
+										<li><a href="index.php#"><span class="submenu-label">menu 4.1</span></a></li>
+										<li><a href="index.php#"><span class="submenu-label">menu 4.2</span></a></li>
+									</ul>
+								</li>
+								<li><a href="index.php#"><span class="submenu-label">menu 3.2</span></a></li>
+								<li><a href="index.php#"><span class="submenu-label">menu 3.3</span></a></li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<div class="alert alert-info">
+				[[${denomination.mission}]]
+			</div>
+		</div><!-- /main-menu -->
+	</div>
+	<div class="slimScrollBar" style="width: 0px; position: absolute; top: 0px; opacity: 0.4; display: block; border-radius: 7px; z-index: 99; right: 1px; height: 478.893px; background: rgb(0, 0, 0);"></div><div class="slimScrollRail" style="width: 0px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; opacity: 0.2; z-index: 90; right: 1px; background: rgb(51, 51, 51);"></div></div><!-- /sidebar-inner -->
+</aside>
+
+</body>
+
+</html>
+		

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/login_register_layout}">
+
+<head>
+<title>Login</title>
+</head>
+
+<body>
+
+	<div layout:fragment="content">
+
+		<div class="panel panel-default">
+			<div class="panel-heading clearfix">
+				<div class="pull-left">
+					<i class="fa fa-lock fa-lg"></i> Login
+				</div>
+
+				<div class="pull-right">
+					<span style="font-size: 11px;">Don't have any account?</span> <a
+						class="btn btn-default btn-xs login-link" th:href="@{register}"
+						style="margin-top: -2px;"><i class="fa fa-plus-circle"></i>
+						Sign up</a>
+				</div>
+			</div>
+			<div class="panel-body">
+
+
+				<div th:if="${param.error}" class="alert alert-danger">
+					<a href="#" class="close" data-dismiss="alert">&times;</a> <strong>Error!</strong>
+					[[${param.error}]]
+				</div>
+
+				<form method="POST" th:action="@{/login}">
+					<div class="form-group">
+						<label>Username</label> <input type="text" required
+							placeholder="Username" name="username" value=""
+							class="form-control input-sm bounceIn animation-delay2">
+					</div>
+					<div class="form-group">
+						<label>Password</label> <input type="password" required
+							placeholder="Password" name="password"
+							class="form-control input-sm bounceIn animation-delay4">
+					</div>
+
+					<div class="form-group">
+						<label class="label-checkbox"> <input type="checkbox"
+							name="remember-me"> <span class="custom-checkbox"></span>
+							Remember me
+						</label>
+					</div>
+					<!-- /form-group -->
+
+					<div class="seperator"></div>
+					<div class="form-group">
+						Forgot your password?<br> Click <a href="login.html#">here</a>
+						to reset your password
+					</div>
+
+					<hr>
+					<button
+						class="btn btn-success btn-sm bounceIn animation-delay5 pull-right"
+						type="submit" name="login_btn">
+						<i class="fa fa-sign-in"></i> Sign in
+					</button>
+				</form>
+			</div>
+		</div>
+		<!-- /panel -->
+
+	</div>
+
+</body>
+</html>
