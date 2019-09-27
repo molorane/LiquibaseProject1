@@ -292,7 +292,6 @@
 			<column name="comment" type="VARCHAR(255)" />
 		</createTable>
 
-
 		<addPrimaryKey  columnNames="user_id, role_id"
             			constraintName="pk_user_role"  tableName="${userRoleTable}" />
         
