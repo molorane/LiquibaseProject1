@@ -21,6 +21,10 @@
 	<property name="institution_branchTable" value="institution_branch" />
 	<property name="studentTable" value="student" />
 	<property name="statusTable" value="status" />
+	<property name="stateTable" value="state" />
+	<property name="cityTable" value="city" />
+	<property name="churchCategoryTable" value="church_category" />
+	<property name="churchTable" value="church" />
     
     
 </databaseChangeLog>

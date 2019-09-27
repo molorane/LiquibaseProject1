@@ -39,7 +39,7 @@
 
 		<div th:insert="fragments/topnav :: topnav"></div>
 
-		<div th:insert="fragments/asidenav :: asidenav (${user.roles[0].toString()}) "></div>
+		<div th:insert="fragments/asidenav :: asidenav (${session.authenticated_user.roles[0].toString()}) "></div>
 
 		<div id="main-container">
 			<div layout:fragment="content">

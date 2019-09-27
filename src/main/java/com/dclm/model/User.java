@@ -184,4 +184,11 @@ public class User implements Serializable{
 		this.userInfo = userInfo;
 	}
 
+	public boolean isAdmin(){
+		return (roles.stream()
+				.filter(role -> "ADMIN".equals(role.getRole()))
+				.findAny()
+				.orElse(null) != null);
+	}
+
 }

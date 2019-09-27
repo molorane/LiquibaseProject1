@@ -15,20 +15,18 @@
 			<ul class="breadcrumb">
 				<li><i class="fa fa-home"></i><a href="home"> Home</a></li>
 				<li class="active">Dashboard</li>
-				<li><span sec:authorize="isAuthenticated()"
-					style="display: inline-block;"> User-Roles: [[${roles}]] <span
-						sec:authentication="principal.authorities"></span></li>
+				<li>Roles: [[${session.authenticated_user.roles}]]</li>
 			</ul>
 		</div>
 		<!-- /breadcrumb-->
 		<div class="main-header clearfix">
 			<div class="page-title">
 				<h3 class="no-margin">Dashboard</h3>
-				<span>Welcome [[${user.userInfo.last_name}]]...</span> </span>
+				<span>Welcome [[${session.authenticated_user.userInfo.first_name}]]...</span> </span>
 			</div>
 			<!-- /page-title -->
 
-			<ul class="page-stats" th:if="${#lists.contains(roles, 'ADMIN_USER')}">
+			<ul class="page-stats" th:if="${session.authenticated_user.isAdmin()}">
 				<li>
 					<div class="value">
 						<span>Visitors today</span>
@@ -52,7 +50,7 @@
 		</div>
 		<!-- /main-header -->
 
-		<div class="grey-container shortcut-wrapper" th:if="${#lists.contains(roles, 'ADMIN_USER')}">
+		<div class="grey-container shortcut-wrapper" th:if="${session.authenticated_user.isAdmin()}">
 			 <a href="index.php#" class="shortcut-link"> <span
 				class="shortcut-icon"> <i class="fa fa-search"></i>
 			</span> <span class="text">Search</span>
@@ -106,7 +104,7 @@
 
 
 
-		<div class="padding-md" th:if="${#lists.contains(roles, 'ADMIN_USER')}">
+		<div class="padding-md" th:if="${session.authenticated_user.isAdmin()}">
 			<div class="row">
 				<div class="col-sm-6 col-md-3">
 					<div class="panel-stat3 bg-danger">
@@ -384,12 +382,12 @@
 										<div class="progress progress-striped active"
 											style="height: 8px; margin: 5px 0 0 0;">
 											<div class="progress-bar progress-bar-danger"
-												style="width: 97%">
-												<span class="sr-only">97% Complete</span>
+												style="width: 9%">
+												<span class="sr-only">9% Complete</span>
 											</div>
 										</div>
 									</td>
-									<td>97%</td>
+									<td>9%</td>
 									<td><span class="badge badge-info">5m</span></td>
 								</tr>
 								<tr>

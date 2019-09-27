@@ -9,27 +9,27 @@
     <changeSet id="institutions" author="${author}">
     	
     	<insert tableName="${institutionTable}">
-    		<column name="institution" value="Tumelo Community Primary School" />
-    		<column name="institution_type_id" value="1" />
-    		<column name="count_id" value="1" />
+    		<column name="name" value="Tumelo Community Primary School" />
+    		<column name="type_id" value="1" />
+    		<column name="country_id" value="1" />
     	</insert>
     	
     	<insert tableName="${institutionTable}">
-    		<column name="institution" value="Sefika High School" />
-    		<column name="institution_type_id" value="2" />
-    		<column name="count_id" value="1" />
+    		<column name="name" value="Sefika High School" />
+    		<column name="type_id" value="2" />
+    		<column name="country_id" value="1" />
     	</insert>
     	
     	<insert tableName="${institutionTable}">
-    		<column name="institution" value="National University Of Lesotho" />
-    		<column name="institution_type_id" value="4" />
-    		<column name="count_id" value="1" />
+    		<column name="name" value="National University Of Lesotho" />
+    		<column name="type_id" value="4" />
+    		<column name="country_id" value="1" />
     	</insert>
     	
     	<insert tableName="${institutionTable}">
-    		<column name="institution" value="University Of The Free State" />
-    		<column name="institution_type_id" value="4" />
-    		<column name="count_id" value="2" />
+    		<column name="name" value="University Of The Free State" />
+    		<column name="type_id" value="4" />
+    		<column name="country_id" value="2" />
     	</insert>
     
     </changeSet>

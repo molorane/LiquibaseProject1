@@ -12,10 +12,10 @@
 			<div class="row">
 				<div class="col-sm-6">
 					<span class="footer-brand"> 
-						<strong class="text-danger" th:text="${denomination.shortName}">Church</strong>
+						<strong class="text-danger" th:text="${session.denomination.shortName}">Church</strong>
 					</span>
 					<p class="no-margin">
-						&copy; 1979 - 2019 <strong th:text="${denomination.name}">DCLM </strong>. Founder: <strong th:text="${denomination.founder}"></strong> 
+						&copy; 1979 - 2019 <strong th:text="${session.denomination.name}">DCLM </strong>. Founder: <strong th:text="${session.denomination.founder}"></strong>
 					</p>
 				</div>
 			</div>

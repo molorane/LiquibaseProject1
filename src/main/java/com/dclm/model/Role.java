@@ -13,23 +13,27 @@ public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private int role_id;
 
-	@Column(name = "role_name", unique = true)
+	@Column(name = "name", unique = true)
 	private String role;
 	
-	@Column(name = "role_desc")
+	@Column(name = "desc")
 	private String desc;
 
 	public Role() {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Role(String role) {
+		this(role, role);
+	}
+
 	public Role(String role, String desc) {
 		this.role = role;
 		this.desc = desc;
 	}
-
 
 	public int getRole_id() {
 		return role_id;

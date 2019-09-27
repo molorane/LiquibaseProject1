@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="states" author="${author}">
+
+		<insert tableName="${stateTable}">
+			<column name="id" value="1" />
+			<column name="name" value="Western Cape" />
+			<column name="sname" value="WC" />
+			<column name="country_id" value="2" />
+		</insert>
+
+		<insert tableName="${stateTable}">
+			<column name="id" value="2" />
+			<column name="name" value="Eastern Cape" />
+			<column name="sname" value="EC" />
+			<column name="country_id" value="2" />
+		</insert>
+
+		<insert tableName="${stateTable}">
+			<column name="id" value="3" />
+			<column name="name" value="Northern Cape" />
+			<column name="sname" value="NC" />
+			<column name="country_id" value="2" />
+		</insert>
+
+		<insert tableName="${stateTable}">
+			<column name="id" value="4" />
+			<column name="name" value="North West" />
+			<column name="sname" value="NW" />
+			<column name="country_id" value="2" />
+		</insert>
+
+		<insert tableName="${stateTable}">
+			<column name="id" value="5" />
+			<column name="name" value="Free State" />
+			<column name="sname" value="FS" />
+			<column name="country_id" value="2" />
+		</insert>
+
+		<insert tableName="${stateTable}">
+			<column name="id" value="6" />
+			<column name="name" value="Kwazulu Natal" />
+			<column name="sname" value="KZN" />
+			<column name="country_id" value="2" />
+		</insert>
+
+		<insert tableName="${stateTable}">
+			<column name="id" value="7" />
+			<column name="name" value="Gauteng" />
+			<column name="sname" value="GP" />
+			<column name="country_id" value="2" />
+		</insert>
+
+		<insert tableName="${stateTable}">
+			<column name="id" value="8" />
+			<column name="name" value="Limpopo" />
+			<column name="sname" value="L" />
+			<column name="country_id" value="2" />
+		</insert>
+
+		<insert tableName="${stateTable}">
+			<column name="id" value="9" />
+			<column name="name" value="Mpumalanga" />
+			<column name="sname" value="MP" />
+			<column name="country_id" value="2" />
+		</insert>
+
+	</changeSet>
+
+	<changeSet id="cities" author="${author}">
+
+		<insert tableName="${cityTable}">
+			<column name="state_id" value="7" />
+			<column name="name" value="Johannesburg" />
+			<column name="sname" value="JHB" />
+		</insert>
+
+		<insert tableName="${cityTable}">
+			<column name="state_id" value="7" />
+			<column name="name" value="Pretoria" />
+			<column name="sname" value="PTR" />
+		</insert>
+
+		<insert tableName="${cityTable}">
+			<column name="state_id" value="5" />
+			<column name="name" value="Bloemfontein" />
+			<column name="sname" value="BFN" />
+		</insert>
+
+		<insert tableName="${cityTable}">
+			<column name="state_id" value="5" />
+			<column name="name" value="Ladybrand" />
+			<column name="sname" value="LDB" />
+		</insert>
+
+		<insert tableName="${cityTable}">
+			<column name="state_id" value="5" />
+			<column name="name" value="Botshabelo" />
+			<column name="sname" value="BTL" />
+		</insert>
+
+		<insert tableName="${cityTable}">
+			<column name="state_id" value="7" />
+			<column name="name" value="Evaton" />
+			<column name="sname" value="EVTN" />
+		</insert>
+
+
+	</changeSet>
+
+	<changeSet id="churchCategories" author="${author}">
+
+		<insert tableName="${churchCategoryTable}">
+			<column name="id" value="1" />
+			<column name="name" value="Branch" />
+		</insert>
+
+		<insert tableName="${churchCategoryTable}">
+			<column name="id" value="2" />
+			<column name="name" value="Head Quarters" />
+		</insert>
+
+
+	</changeSet>
+
+
+
+</databaseChangeLog>

@@ -12,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.dclm.model.User;
 import com.dclm.service.IUserService;
@@ -24,27 +23,25 @@ public class AuthenticationController {
 	private IUserService userService;
 	
 	
-	@GetMapping("/login")
-    public ModelAndView login() {
+	@GetMapping({"/login","/"})
+    public String login() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		ModelAndView loginView = new ModelAndView("login");
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 		    /* The user is logged in :) */
-		    return new ModelAndView("redirect:/home");
+		    return "redirect:/home";
 		}
-		return loginView;
+		return "login";
     }
 	
 	@GetMapping("/register")
-    public ModelAndView register() {
+    public String register(Model model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		ModelAndView loginView = new ModelAndView("register");
-		loginView.addObject("user", new User());
+		model.addAttribute("user", new User());
 		if (!(auth instanceof AnonymousAuthenticationToken)) {
 		    /* The user is logged in :) */
-		    return new ModelAndView("redirect:/home");
+		    return "redirect:/home";
 		}
-		return loginView;
+		return "register";
     }
 	
 	@PostMapping("/register")

@@ -7,31 +7,49 @@
 
     
     <changeSet id="defaultRole" author="${author}">
-    	
+
     	<insert tableName="${roleTable}">
-    		<column name="role_id" value="1" />
-    		<column name="role_name" value="SUPER_USER" />
-    		<column name="role_desc" value="SUPER_USER" />
+    		<column name="id" value="1" />
+    		<column name="name" value="ADMIN" />
+    		<column name="desc" value="ADMIN" />
     	</insert>
     	
     	<insert tableName="${roleTable}">
-    		<column name="role_id" value="2" />
-    		<column name="role_name" value="ADMIN_USER" />
-    		<column name="role_desc" value="ADMIN_USER" />
+    		<column name="id" value="2" />
+    		<column name="name" value="SITE" />
+    		<column name="desc" value="SITE" />
     	</insert>
     	
     	<insert tableName="${roleTable}">
-    		<column name="role_id" value="3" />
-    		<column name="role_name" value="SITE_USER" />
-    		<column name="role_desc" value="SITE_USER" />
+    		<column name="id" value="3" />
+    		<column name="name" value="SECRETARY" />
+    		<column name="desc" value="SECRETARY" />
     	</insert>
-    	
-    	<insert tableName="${roleTable}">
-    		<column name="role_id" value="4" />
-    		<column name="role_name" value="SECRETARY_USER" />
-    		<column name="role_desc" value="SECRETARY_USER" />
-    	</insert>
-    
+
+		<insert tableName="${roleTable}">
+			<column name="id" value="4" />
+			<column name="name" value="NATIONAL_OVERSEER" />
+			<column name="desc" value="NATIONAL_OVERSEER" />
+		</insert>
+
+		<insert tableName="${roleTable}">
+			<column name="id" value="5" />
+			<column name="name" value="LOCATION_PASTOR" />
+			<column name="desc" value="LOCATION_PASTOR" />
+		</insert>
+
+		<insert tableName="${roleTable}">
+			<column name="id" value="6" />
+			<column name="name" value="CAMPUS_PASTOR" />
+			<column name="desc" value="CAMPUS_PASTOR" />
+		</insert>
+
+		<insert tableName="${roleTable}">
+			<column name="id" value="7" />
+			<column name="name" value="ATTENDANCE_REGISTERER" />
+			<column name="desc" value="ATTENDANCE_REGISTERER" />
+		</insert>
+
     </changeSet>
     
     
@@ -108,7 +126,7 @@
     	
     	<insert tableName="${userRoleTable}">
     		<column name="user_id" value="2014098617" />
-    		<column name="role_id" value="2" />
+    		<column name="role_id" value="1" />
     	</insert>
     	
     	<insert tableName="${userRoleTable}">
@@ -180,38 +198,38 @@
      <changeSet id="continents" author="${author}">
     	
     	<insert tableName="${continentTable}">
-    		<column name="cont_id" value="1" />
-    		<column name="cont_name" value="Africa" />
+    		<column name="id" value="1" />
+    		<column name="name" value="Africa" />
     	</insert>
     	
     	<insert tableName="${continentTable}">
-    		<column name="cont_id" value="2" />
-    		<column name="cont_name" value="Asia" />
+    		<column name="id" value="2" />
+    		<column name="name" value="Asia" />
     	</insert>
     	
     	<insert tableName="${continentTable}">
-    		<column name="cont_id" value="3" />
-    		<column name="cont_name" value="Europe" />
+    		<column name="id" value="3" />
+    		<column name="name" value="Europe" />
     	</insert>
     	
     	<insert tableName="${continentTable}">
-    		<column name="cont_id" value="4" />
-    		<column name="cont_name" value="South America" />
+    		<column name="id" value="4" />
+    		<column name="name" value="South America" />
     	</insert>
     	
     	<insert tableName="${continentTable}">
-    		<column name="cont_id" value="5" />
-    		<column name="cont_name" value="North America" />
+    		<column name="id" value="5" />
+    		<column name="name" value="North America" />
     	</insert>
     	
     	<insert tableName="${continentTable}">
-    		<column name="cont_id" value="6" />
-    		<column name="cont_name" value="Australia" />
+    		<column name="id" value="6" />
+    		<column name="name" value="Australia" />
     	</insert>
     	
     	<insert tableName="${continentTable}">
-    		<column name="cont_id" value="7" />
-    		<column name="cont_name" value="Antarctica" />
+    		<column name="id" value="7" />
+    		<column name="name" value="Antarctica" />
     	</insert>
     
     </changeSet>
@@ -221,53 +239,53 @@
     <changeSet id="qualifications" author="${author}">
     
     	<insert tableName="${qualificationTable}">
-    		<column name="qual_id" value="1" />
-    		<column name="qualification" value="Diploma" />
+    		<column name="id" value="1" />
+    		<column name="name" value="Diploma" />
     	</insert>
     	
     	<insert tableName="${qualificationTable}">
-    		<column name="qual_id" value="2" />
-    		<column name="qualification" value="Degree" />
+    		<column name="id" value="2" />
+    		<column name="name" value="Degree" />
     	</insert>
     	
     	<insert tableName="${qualificationTable}">
-    		<column name="qual_id" value="3" />
-    		<column name="qualification" value="Certificate" />
+    		<column name="id" value="3" />
+    		<column name="name" value="Certificate" />
     	</insert>
     	
     	<insert tableName="${qualificationTable}">
-    		<column name="qual_id" value="4" />
-    		<column name="qualification" value="Honours" />
+    		<column name="id" value="4" />
+    		<column name="name" value="Honours" />
     	</insert>
     	
     	<insert tableName="${qualificationTable}">
-    		<column name="qual_id" value="5" />
-    		<column name="qualification" value="Masters" />
+    		<column name="id" value="5" />
+    		<column name="name" value="Masters" />
     	</insert>
     	
     	<insert tableName="${qualificationTable}">
-    		<column name="qual_id" value="6" />
-    		<column name="qualification" value="PhD" />
+    		<column name="id" value="6" />
+    		<column name="name" value="PhD" />
     	</insert>
     	
     	<insert tableName="${qualificationTable}">
-    		<column name="qual_id" value="7" />
-    		<column name="qualification" value="Cambridge A-level" />
+    		<column name="id" value="7" />
+    		<column name="name" value="Cambridge A-level" />
     	</insert>
     	
     	<insert tableName="${qualificationTable}">
-    		<column name="qual_id" value="8" />
-    		<column name="qualification" value="Cambridge O-level" />
+    		<column name="id" value="8" />
+    		<column name="name" value="Cambridge O-level" />
     	</insert>
     	
     	<insert tableName="${qualificationTable}">
-    		<column name="qual_id" value="9" />
-    		<column name="qualification" value="Matric" />
+    		<column name="id" value="9" />
+    		<column name="name" value="Matric" />
     	</insert>
     	
     	<insert tableName="${qualificationTable}">
-    		<column name="qual_id" value="10" />
-    		<column name="qualification" value="Post Doc" />
+    		<column name="id" value="10" />
+    		<column name="name" value="Post Doc" />
     	</insert>
     
     </changeSet>
@@ -275,27 +293,27 @@
     <changeSet id="courses" author="${author}">
     
     	<insert tableName="${courseTable}">
-    		<column name="course" value="Primary School" />
+    		<column name="name" value="Primary School" />
     	</insert>
     
     	<insert tableName="${courseTable}">
-    		<column name="course" value="High School" />
+    		<column name="name" value="High School" />
     	</insert>
     	
     	<insert tableName="${courseTable}">
-    		<column name="course" value="Computer Science" />
+    		<column name="name" value="Computer Science" />
     	</insert>
     	
     	<insert tableName="${courseTable}">
-    		<column name="course" value="Medicine" />
+    		<column name="name" value="Medicine" />
     	</insert>
     	
     	<insert tableName="${courseTable}">
-    		<column name="course" value="Accounting" />
+    		<column name="name" value="Accounting" />
     	</insert>
     	
     	<insert tableName="${courseTable}">
-    		<column name="course" value="Education" />
+    		<column name="name" value="Education" />
     	</insert>
     	
     </changeSet>
@@ -303,19 +321,19 @@
     <changeSet id="institution_types" author="${author}">
     	
     	<insert tableName="${institution_typeTable}">
-    		<column name="institution_type" value="Primary School" />
+    		<column name="type" value="Primary School" />
     	</insert>
     
     	<insert tableName="${institution_typeTable}">
-    		<column name="institution_type" value="High School" />
+    		<column name="type" value="High School" />
     	</insert>
     	
     	<insert tableName="${institution_typeTable}">
-    		<column name="institution_type" value="College" />
+    		<column name="type" value="College" />
     	</insert>
     	
     	<insert tableName="${institution_typeTable}">
-    		<column name="institution_type" value="University" />
+    		<column name="type" value="University" />
     	</insert>
     	
     </changeSet>
@@ -341,7 +359,7 @@
     		<column name="user_id" value="2019" />
     		<column name="institution_branch_id" value="1" />
     		<column name="course_id" value="1" />
-    		<column name="qual_id" value="8" />
+    		<column name="qualification_id" value="8" />
     		<column name="completed" value="2004" />
     		<column name="status_id" value="1" />
     		<column name="recorded_by" value="2019" />
@@ -351,7 +369,7 @@
     		<column name="user_id" value="2019" />
     		<column name="institution_branch_id" value="2" />
     		<column name="course_id" value="2" />
-    		<column name="qual_id" value="2" />
+    		<column name="qualification_id" value="2" />
     		<column name="completed" value="2009" />
     		<column name="status_id" value="1" />
     		<column name="recorded_by" value="2019" />
@@ -361,7 +379,7 @@
     		<column name="user_id" value="2019" />
     		<column name="institution_branch_id" value="3" />
     		<column name="course_id" value="3" />
-    		<column name="qual_id" value="2" />
+    		<column name="qualification_id" value="2" />
     		<column name="completed" value="2014" />
     		<column name="status_id" value="2" />
     		<column name="recorded_by" value="2019" />
@@ -371,7 +389,7 @@
     		<column name="user_id" value="2019" />
     		<column name="institution_branch_id" value="4" />
     		<column name="course_id" value="3" />
-    		<column name="qual_id" value="2" />
+    		<column name="qualification_id" value="2" />
     		<column name="completed" value="2017" />
     		<column name="status_id" value="1" />
     		<column name="recorded_by" value="2019" />
@@ -381,7 +399,7 @@
     		<column name="user_id" value="2019" />
     		<column name="institution_branch_id" value="4" />
     		<column name="course_id" value="3" />
-    		<column name="qual_id" value="4" />
+    		<column name="qualification_id" value="4" />
     		<column name="completed" value="2018" />
     		<column name="status_id" value="1" />
     		<column name="recorded_by" value="2019" />
