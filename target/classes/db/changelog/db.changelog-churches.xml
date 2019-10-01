@@ -8,16 +8,15 @@
 	<changeSet id="churches" author="${author}">
 
 		<sql>
-			INSERT INTO `church` (`id`, `church_category_id`, `city_id`, `street_name`, `street_number`, `house_no`, `latitude`, `longitute`, `website`, `telephone`, `faxno`, `postalcode`, `recorded_by`, `updated_by`, `start_date`, `started_by`, `startplace`, `comment`)
-			VALUES (NULL, '1', '3', 'Phase 6', 'Malitlhabela', '10754', '89.9', '12.98', NULL, '08176856468', NULL, NULL, '2014098617', NULL, '2013-09-11', '2019', 'Phase 6 house 756', NULL);
+			INSERT INTO ${churchTable} (`id`, `church_category_id`, `city_id`, `street_name`, `street_number`, `house_no`, `latitude`, `longitute`, `website`, `telephone`, `faxno`, `postalcode`, `recorded_by`, `updated_by`, `start_date`, `started_by`, `startplace`, `comment`)
+			VALUES (1, '1', '3', 'Phase 6', 'Malitlhabela', '10754', '89.9', '12.98', NULL, '08176856468', NULL, NULL, '2014098617', NULL, '2013-09-11', '2019', 'Phase 6 house 756', NULL);
 
-			INSERT INTO `church` (`id`, `church_category_id`, `city_id`, `street_name`, `street_number`, `house_no`, `latitude`, `longitute`, `website`, `telephone`, `faxno`, `postalcode`, `recorded_by`, `updated_by`, `start_date`, `started_by`, `startplace`, `comment`)
-			VALUES (NULL, '1', '1', 'Wits university Randburg', '80', 'OLS 7', NULL, NULL, NULL, NULL, NULL, NULL, '2019', NULL, '2015-09-10', '2014098616', 'Wits ', NULL);
+			INSERT INTO ${churchTable} (`id`, `church_category_id`, `city_id`, `street_name`, `street_number`, `house_no`, `latitude`, `longitute`, `website`, `telephone`, `faxno`, `postalcode`, `recorded_by`, `updated_by`, `start_date`, `started_by`, `startplace`, `comment`)
+			VALUES (2, '1', '1', 'Wits university Randburg', '80', 'OLS 7', NULL, NULL, NULL, NULL, NULL, NULL, '2019', NULL, '2015-09-10', '2014098616', 'Wits ', NULL);
 
 		</sql>
 
 	</changeSet>
-
 
 
 </databaseChangeLog>

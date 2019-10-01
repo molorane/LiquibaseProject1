@@ -374,6 +374,8 @@
 
 		<sql>
 			ALTER TABLE ${churchTable} CHANGE update_date update_date TIMESTAMP on update CURRENT_TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP;
+
+			ALTER TABLE ${attendanceTable} ADD CONSTRAINT CHK_DateIsSunday CHECK (WEEKDAY(attendance_date)=6);
 		</sql>
 	</changeSet>
 
