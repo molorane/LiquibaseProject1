@@ -181,7 +181,7 @@
     	<insert tableName="${denominationTable}">
     		<column name="id" value="1" />
     		<column name="name" value="Deeper Christian Life Ministry South Africa" />
-    		<column name="short_name" value="DCLM" />
+    		<column name="sname" value="DCLM" />
     		<column name="country" value="Nigeria" />
     		<column name="founder" value="Kumuyi Fulio" />
     		<column name="start_date" value="1973-01-01" />
@@ -190,7 +190,7 @@
     		<column name="gps_long" value="7.2822984" />
     		<column name="logo" value="2014098618.jpg" />
     		<column name="mission" value="Your Spiritual Welfare is our concern" />
-    		<column name="updated_by" value="RA901725" />
+    		<column name="updated_by" value="2014098617" />
     	</insert>
     
     </changeSet>
@@ -347,6 +347,30 @@
     	<insert tableName="${statusTable}">
     		<column name="status" value="Incomplete" />
     	</insert>
+
+		<insert tableName="${statusTable}">
+			<column name="status" value="Closed" />
+		</insert>
+
+		<insert tableName="${statusTable}">
+			<column name="status" value="Active" />
+		</insert>
+
+		<insert tableName="${statusTable}">
+			<column name="status" value="In progress" />
+		</insert>
+
+		<insert tableName="${statusTable}">
+			<column name="status" value="Postponed" />
+		</insert>
+
+		<insert tableName="${statusTable}">
+			<column name="status" value="Overdue" />
+		</insert>
+
+		<insert tableName="${statusTable}">
+			<column name="status" value="Dropped Out" />
+		</insert>
     	
     </changeSet>
     

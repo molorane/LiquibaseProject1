@@ -25,6 +25,8 @@
 	<property name="cityTable" value="city" />
 	<property name="churchCategoryTable" value="church_category" />
 	<property name="churchTable" value="church" />
-    
-    
+	<property name="serviceTable" value="tbl_service" />
+	<property name="serviceSessionTable" value="service_session" />
+	<property name="attendanceTable" value="attendance" />
+
 </databaseChangeLog>

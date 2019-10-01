@@ -78,7 +78,7 @@
 			<column name="name" type="VARCHAR(100)">
 				 <constraints nullable="false" />
 			</column>
-			<column name="short_name" type="VARCHAR(50)">
+			<column name="sname" type="VARCHAR(50)">
 				<constraints nullable="false" />
 			</column>
 			<column name="country" type="VARCHAR(50)">
@@ -250,12 +250,6 @@
 			<column name="church_category_id" type="INT">
 				<constraints nullable="false" foreignKeyName="fk_church_category" references="${churchCategoryTable}(id)" />
 			</column>
-			<column name="name" type="VARCHAR(50)">
-				<constraints nullable="false" />
-			</column>
-			<column name="sname" type="VARCHAR(5)">
-				<constraints nullable="false" />
-			</column>
 			<column name="city_id" type="INT">
 				<constraints nullable="false" foreignKeyName="fk_church_city" references="${cityTable}(id)" />
 			</column>
@@ -290,6 +284,80 @@
 			</column>
 			<column name="startplace" type="VARCHAR(100)" />
 			<column name="comment" type="VARCHAR(255)" />
+			<column name="status_id" type="INT" defaultValueNumeric="4">
+				<constraints nullable="true" foreignKeyName="fk_church_status_id" references="${statusTable}(id)" />
+			</column>
+		</createTable>
+
+		<createTable tableName="${serviceTable}">
+			<column name="id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<createTable tableName="${serviceSessionTable}">
+			<column name="id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="VARCHAR(50)">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+
+		<createTable tableName="${attendanceTable}">
+			<column name="id" type="INT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="church_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_church_attendance" references="${churchTable}(id)" />
+			</column>
+			<column name="service_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_church_service_id" references="${serviceTable}(id)" />
+			</column>
+			<column name="session_id" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_church_service_session_id" references="${serviceSessionTable}(id)" />
+			</column>
+			<column name="attendance_date" type="DATE">
+				<constraints nullable="false" />
+			</column>
+			<column name="adult_male" type="INT" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+			<column name="adult_female" type="INT" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+			<column name="youth_male" type="INT" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+			<column name="youth_female" type="INT" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+			<column name="children_male" type="INT" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+			<column name="children_female" type="INT" defaultValue="0">
+				<constraints nullable="false" />
+			</column>
+			<column name="recorded_by" type="INT">
+				<constraints nullable="false" foreignKeyName="fk_attendance_recorded_by_id" references="${userTable}(user_id)" />
+			</column>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="record_date" type="TIMESTAMP"/>
+			<column name="updated_by" type="INT">
+				<constraints nullable="true" foreignKeyName="fk_attendance_updated_by_id" references="${userTable}(user_id)" />
+			</column>
+			<column defaultValueComputed="CURRENT_TIMESTAMP" name="update_date" type="TIMESTAMP"/>
+			<column name="signature1" type="INT">
+				<constraints nullable="true" foreignKeyName="fk_attendance_signature1" references="${userTable}(user_id)" />
+			</column>
+			<column name="signature2" type="INT">
+				<constraints nullable="true" foreignKeyName="fk_attendance_signature2" references="${userTable}(user_id)" />
+			</column>
+			<column name="signature3" type="INT">
+				<constraints nullable="true" foreignKeyName="fk_attendance_signature3" references="${userTable}(user_id)" />
+			</column>
 		</createTable>
 
 		<addPrimaryKey  columnNames="user_id, role_id"
@@ -300,6 +368,9 @@
             			
         <addPrimaryKey  columnNames="user_id, institution_branch_id,course_id,qualification_id,completed"
             			constraintName="pk_student_institution"  tableName="${studentTable}" />
+
+		<addUniqueConstraint  columnNames="street_name, street_number"
+						constraintName="uk_church"  tableName="${churchTable}" />
 
 		<sql>
 			ALTER TABLE ${churchTable} CHANGE update_date update_date TIMESTAMP on update CURRENT_TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP;

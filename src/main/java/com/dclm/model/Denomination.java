@@ -17,9 +17,9 @@ public class Denomination {
 	
 	@Column(name = "name", unique = true)
 	private String name;
-	
-	@Column(name = "shortName", unique = true)
-	private String shortName;
+
+	@Column(name = "sname", unique = true)
+	private String sname;
 	
 	@Column(name = "country", unique = true)
 	private String country;
@@ -27,7 +27,7 @@ public class Denomination {
 	@Column(name = "founder", unique = true)
 	private String founder;
 	
-	@Column(name = "startDate", unique = true)
+	@Column(name = "start_date", unique = true)
 	private Date startDate;
 	
 	@Column(name = "hq", unique = true)
@@ -61,12 +61,12 @@ public class Denomination {
 		this.name = name;
 	}
 
-	public String getShortName() {
-		return shortName;
+	public String getSname() {
+		return sname;
 	}
 
-	public void setShortName(String shortName) {
-		this.shortName = shortName;
+	public void setSname(String sname) {
+		this.sname = sname;
 	}
 
 	public String getCountry() {

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<changeSet id="churchServices" author="${author}">
+
+		<insert tableName="${serviceTable}">
+			<column name="id" value="1" />
+			<column name="name" value="Sunday Service" />
+		</insert>
+
+		<insert tableName="${serviceTable}">
+			<column name="id" value="2" />
+			<column name="name" value="Revival" />
+		</insert>
+
+		<insert tableName="${serviceTable}">
+			<column name="id" value="3" />
+			<column name="name" value="Bible Study" />
+		</insert>
+
+		<insert tableName="${serviceTable}">
+			<column name="id" value="4" />
+			<column name="name" value="Workers Meeting" />
+		</insert>
+
+		<insert tableName="${serviceTable}">
+			<column name="id" value="5" />
+			<column name="name" value="House Caring Fellowship" />
+		</insert>
+
+		<insert tableName="${serviceTable}">
+			<column name="id" value="6" />
+			<column name="name" value="Koinonia" />
+		</insert>
+
+		<insert tableName="${serviceTable}">
+			<column name="id" value="7" />
+			<column name="name" value="Bible Club" />
+		</insert>
+
+		<insert tableName="${serviceTable}">
+			<column name="id" value="8" />
+			<column name="name" value="Leaders Meeting" />
+		</insert>
+
+	</changeSet>
+
+	<changeSet id="churchServiceSessions" author="${author}">
+
+		<insert tableName="${serviceSessionTable}">
+			<column name="id" value="1" />
+			<column name="name" value="Morning" />
+		</insert>
+
+		<insert tableName="${serviceSessionTable}">
+			<column name="id" value="2" />
+			<column name="name" value="Afternoon" />
+		</insert>
+
+	</changeSet>
+
+
+</databaseChangeLog>
